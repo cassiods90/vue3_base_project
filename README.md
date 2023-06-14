@@ -1,42 +1,32 @@
-# Nuxt 3 Minimal Starter
+# Vue3 Nuxt3 Base Project
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a base project to quickly start new projects in Vue3 using Nuxt3.
 
-## Setup
+## Features
 
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`
+What has installed in this project:
 
 ```bash
-npm run dev
+=>  Eslint and Prettier with predefined configurations for code formatting.
+=>  Vue3 and Nuxt3 setup.
+=>  Usage of preferred fonts and Sass as the CSS preprocessor.
+=>  Bootstrap integration for styling.
+=>  Project routes with a navigation bar.
+=>  Pinia for state management (includes a test component on the home page)
+=>  Swiper Carousel integration (includes a test component on the home page)
 ```
 
-## Production
+## Getting Started:
 
-Build the application for production:
+To get started with this base project, follow these steps:
 
 ```bash
-npm run build
+=>  Clone the repository.
+=>  Install the dependencies using npm install or yarn install.
+=>  Start the development server using npm run dev or yarn dev.
+=>  Open your browser and navigate to http://localhost:3000 to see the project running.
 ```
 
-Locally preview production build:
+Feel free to modify and customize this base project according to your needs.
 
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Enjoy coding!
