@@ -35,66 +35,49 @@
     </swiper>
 </template>
 
-<script>
+<script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.css'
 
 SwiperCore.use([Autoplay, Navigation, Pagination])
 
-export default {
-    components: {
-        Swiper,
-        SwiperSlide,
+const breakpoints = {
+    1: {
+        slidesPerView: 2,
+        spaceBetween: 15,
     },
-    setup() {
-        const breakpoints = {
-            1: {
-                slidesPerView: 2,
-                spaceBetween: 15,
-            },
-            744: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-            1024: {
-                slidesPerView: 5,
-                spaceBetween: 30,
-            },
-        }
-
-        const autoplay = {
-            delay: 55000,
-        }
-
-        const navigation = {
-            nextEl: '.carousel-navigation.arrow-left',
-            prevEl: '.carousel-navigation.arrow-right',
-        }
-
-        const pagination = {
-            el: '.carousel-pagination',
-            type: 'bullets',
-            clickable: true,
-        }
-
-        const onSwiper = (swiper) => {
-            // console.log(swiper)
-        }
-
-        const onSlideChange = () => {
-            // console.log('slide change')
-        }
-
-        return {
-            breakpoints,
-            autoplay,
-            navigation,
-            pagination,
-            onSwiper,
-            onSlideChange,
-        }
+    744: {
+        slidesPerView: 3,
+        spaceBetween: 20,
     },
+    1024: {
+        slidesPerView: 5,
+        spaceBetween: 30,
+    },
+}
+
+const autoplay = {
+    delay: 55000,
+}
+
+const navigation = {
+    nextEl: '.carousel-navigation.arrow-left',
+    prevEl: '.carousel-navigation.arrow-right',
+}
+
+const pagination = {
+    el: '.carousel-pagination',
+    type: 'bullets',
+    clickable: true,
+}
+
+const onSwiper = (swiper) => {
+    // console.log(swiper)
+}
+
+const onSlideChange = () => {
+    // console.log('slide change')
 }
 </script>
 
