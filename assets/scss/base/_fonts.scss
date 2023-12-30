@@ -1,11 +1,10 @@
-/* ---------- FONTS ---------- */
+/*======FONTS======*/
 @font-face {
     font-family: 'JosefinSans-Light';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/JosefinSans-Light.woff') format('woff'),
-        url('../fonts/JosefinSans-Light.woff') format('woff');
+    src: url('../fonts/JosefinSans-Light.woff') format('woff'), url('../fonts/JosefinSans-Light.woff') format('woff');
 }
 
 @font-face {
@@ -13,8 +12,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/JosefinSans-Regular.woff') format('woff'),
-        url('../fonts/JosefinSans-Regular.woff') format('woff');
+    src: url('../fonts/JosefinSans-Regular.woff') format('woff'), url('../fonts/JosefinSans-Regular.woff') format('woff');
 }
 
 @font-face {
@@ -22,8 +20,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/JosefinSans-Bold.woff') format('woff'),
-        url('../fonts/JosefinSans-Bold.woff') format('woff');
+    src: url('../fonts/JosefinSans-Bold.woff') format('woff'), url('../fonts/JosefinSans-Bold.woff') format('woff');
 }
 
 @font-face {
@@ -31,8 +28,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/Poppins-Light.woff') format('woff'),
-        url('../fonts/Poppins-Light.woff') format('woff');
+    src: url('../fonts/Poppins-Light.woff') format('woff'), url('../fonts/Poppins-Light.woff') format('woff');
 }
 
 @font-face {
@@ -40,8 +36,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/Poppins-Regular.woff') format('woff'),
-        url('../fonts/Poppins-Regular.woff') format('woff');
+    src: url('../fonts/Poppins-Regular.woff') format('woff'), url('../fonts/Poppins-Regular.woff') format('woff');
 }
 
 @font-face {
@@ -49,8 +44,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/Poppins-SemiBold.woff') format('woff'),
-        url('../fonts/Poppins-SemiBold.woff') format('woff');
+    src: url('../fonts/Poppins-SemiBold.woff') format('woff'), url('../fonts/Poppins-SemiBold.woff') format('woff');
 }
 
 @font-face {
@@ -58,8 +52,103 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/Poppins-Bold.woff') format('woff'),
-        url('../fonts/Poppins-Bold.woff') format('woff');
+    src: url('../fonts/Poppins-Bold.woff') format('woff'), url('../fonts/Poppins-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'lato-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/lato-regular.woff') format('woff'), url('../fonts/lato-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'lato-bold';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/lato-bold.woff') format('woff'), url('../fonts/lato-bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'lato-black';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/lato-black.woff') format('woff'), url('../fonts/lato-black.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'roboto-light';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/roboto-light.woff') format('woff'), url('../fonts/roboto-light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'roboto-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/roboto-regular.woff') format('woff'), url('../fonts/roboto-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'roboto-bold';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/roboto-bold.woff') format('woff'), url('../fonts/roboto-bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Roboto-Condensed-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/Roboto-Condensed-Bold.woff') format('woff'), url('../fonts/Roboto-Condensed-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/Montserrat-Regular.woff') format('woff'), url('../fonts/Montserrat-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/Montserrat-Bold.woff') format('woff'), url('../fonts/Montserrat-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'merriweather-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/merriweather-Regular.woff') format('woff'), url('../fonts/merriweather-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'merriweather-bold';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/merriweather-bold.woff') format('woff'), url('../fonts/merriweather-bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'oswald-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/oswald-regular.woff') format('woff'), url('../fonts/oswald-regular.woff') format('woff');
 }
 
 @font-face {
@@ -67,4 +156,28 @@
     font-style: normal;
     font-weight: normal;
     src: local('Alfa Slab One Regular'), url('../fonts/AlfaSlabOne-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'leaguegothic-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/leaguegothic-regular.woff') format('woff'), url('../fonts/leaguegothic-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'alexbrush-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/alexbrush-regular.woff') format('woff'), url('../fonts/alexbrush-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'ReklameScript-Regular_DEMO';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/ReklameScript-Regular_DEMO.woff') format('woff'), url('../fonts/ReklameScript-Regular_DEMO.woff') format('woff');
 }

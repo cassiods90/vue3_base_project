@@ -9,7 +9,7 @@
     line-height: 1;
     &.bigtitle {
         @include fluid-type(320px, 1680px, 38px, 48px);
-        font-family: $AlfaSlabOneRegular;
+        font-family: $OswaldRegular;
         line-height: 1.3;
     }
     &.title {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Nuxt 3 Home</h1>
+        <h1 class="text bigtitle">Nuxt 3 Home</h1>
 
         <br /><br />
 
