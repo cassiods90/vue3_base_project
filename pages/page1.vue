@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>Page1</h1>
+    <div class="pages">
+        <h1 class="text bold bigtitle">Page 1</h1>
     </div>
 </template>
 
