@@ -1,0 +1,19 @@
+@use '../helpers' as *;
+@use '../base' as *;
+
+.pages {
+    padding: rem(10);
+    overflow: auto;
+    max-height: calc(100vh - rem(90));
+    height: 100vh;
+    .page-title {
+        margin-bottom: rem(20);
+    }
+    .page-content {
+        margin-top: rem(50);
+    }
+
+    &.ui-kit-page {
+        padding-bottom: rem(80);
+    }
+}

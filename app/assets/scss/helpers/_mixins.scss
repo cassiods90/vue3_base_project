@@ -1,0 +1,299 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:meta';
+
+/* ============================================================
+    THEME EXPORTER
+============================================================ */
+@mixin export-theme($map) {
+    @each $key, $val in $map {
+        --color-#{meta.inspect($key)}: #{$val};
+    }
+}
+
+/* ============================================================
+  TRANSITIONS
+  What it does:
+    Shorthand for CSS transitions with sensible defaults.
+  When to use:
+    Any element that should animate CSS property changes smoothly.
+  Usage:
+    .btn { @include transition(background-color, .25s, ease); }
+  Output:
+    .btn { transition: background-color .25s ease; }
+============================================================ */
+@mixin transition($props: all, $duration: 0.3s, $timing: ease-in-out) {
+    transition: $props $duration $timing;
+}
+
+/* ============================================================
+  ABSOLUTE CENTER
+  What it does:
+    Centers an absolutely positioned element on X, Y or both axes.
+  When to use:
+    Modals, loaders, popovers positioned inside a relative parent.
+  Usage:
+    .loader { @include absolutecenter('both'); }
+  Output:
+    .loader {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+============================================================ */
+@mixin absolutecenter($axis: 'both') {
+    position: absolute;
+    @if $axis == 'y' {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    @if $axis == 'x' {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    @if $axis == 'both' {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* ============================================================
+  GRID CENTER
+  What it does:
+    Centers content using CSS Grid without transforms.
+  When to use:
+    Lightweight centering for containers.
+  Usage:
+    .center { @include grid-center; }
+  Output:
+    .center { display: grid; place-items: center; }
+============================================================ */
+@mixin grid-center {
+    display: grid;
+    place-items: center;
+}
+
+/* ============================================================
+  FLUID TYPE WITH CLAMP
+  What it does:
+    Scales font-size smoothly between min and max viewport widths.
+  When to use:
+    Responsive typography without multiple media queries.
+  Usage:
+    h1 { @include fluid-type(1rem, 2rem); }
+    // Optional custom viewport bounds:
+    h2 { @include fluid-type(1rem, 1.5rem, 360px, 1280px); }
+  Output (conceptual):
+    h1 { font-size: clamp(1rem, calc(1rem + ... * (100vw - 320px) / ...), 2rem); }
+============================================================ */
+@mixin fluid-type($min, $max, $min-vw: 320px, $max-vw: 1440px) {
+    font-size: clamp($min, calc(#{$min} + (#{strip-unit($max - $min)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})), $max);
+}
+
+/* ============================================================
+  FLUID MIN-HEIGHT WITH CLAMP
+  What it does:
+    Scales min-height smoothly between min and max viewport widths.
+  When to use:
+    Hero sections, panels, visual blocks that must grow with screen.
+  Usage:
+    .hero { @include fluid-min-height(40vh, 70vh); }
+  Output (conceptual):
+    .hero { min-height: clamp(40vh, calc(40vh + ...), 70vh); }
+============================================================ */
+@mixin fluid-min-height($min, $max, $min-vw: 320px, $max-vw: 1440px) {
+    min-height: clamp($min, calc(#{$min} + (#{strip-unit($max - $min)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})), $max);
+}
+
+/* ============================================================
+  LINE CLAMP (simplified)
+  What it does:
+    Limits text to a fixed number of lines and truncates the rest.
+  When to use:
+    Cards, lists, previews, anywhere you must avoid overflow text.
+  Usage:
+    .excerpt { @include line-clamp(3); }
+  Output:
+    .excerpt {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+============================================================ */
+@mixin line-clamp($lines) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+}
+
+/* ============================================================
+  MOTION PREFERENCES
+  What it does:
+    Applies styles only when the user allows animations (motion-safe)
+    or prefers reduced motion (reduced-motion).
+  When to use:
+    Respect OS accessibility settings for motion.
+  Usage:
+    @include motion-safe { .box { transition: transform .3s; } }
+    @include reduced-motion { .box { transition: none; } }
+  Output:
+    @media (prefers-reduced-motion: no-preference) { ... }
+    @media (prefers-reduced-motion: reduce) { ... }
+============================================================ */
+@mixin motion-safe {
+    @media (prefers-reduced-motion: no-preference) {
+        @content;
+    }
+}
+@mixin reduced-motion {
+    @media (prefers-reduced-motion: reduce) {
+        @content;
+    }
+}
+
+/* ============================================================
+  FOCUS RING
+  What it does:
+    Draws a consistent, accessible focus indicator.
+  When to use:
+    Keyboard-focusable elements (links, buttons, inputs).
+  Usage:
+    a:focus { @include focus-ring(#0af, 2px, 3px); }
+  Output:
+    a:focus { outline: none; box-shadow: 0 0 0 3px #0af; outline-offset: 2px; }
+============================================================ */
+@mixin focus-ring($focus-color: #3b82f6, $offset: 2px, $width: 2px) {
+    outline: none;
+    box-shadow: 0 0 0 $width $focus-color;
+    outline-offset: $offset;
+}
+
+/* ============================================================
+  MEDIA QUERY MIXINS
+  What it does:
+    Shorthands for min-width and max-width queries using the map.
+  When to use:
+    Simple, readable responsive rules.
+  Usage:
+    @include mq-up(md) { .title { font-size: 1.25rem; } }
+    @include mq-down(sm) { .tag { display: none; } }
+  Output:
+    @media (min-width: 768px) { .title { font-size: 1.25rem; } }
+    @media (max-width: 640px) { .tag { display: none; } }
+============================================================ */
+@mixin mq-up($key) {
+    @media (min-width: bp($key)) {
+        @content;
+    }
+}
+@mixin mq-down($key) {
+    @media (max-width: bp($key)) {
+        @content;
+    }
+}
+
+/* ============================================================
+  CONTAINER QUERIES (CQ)
+  What it does:
+    Styles based on the size of a container, not the viewport.
+  Requirements:
+    A parent must have `container-type: inline-size;` (or size/style).
+  When to use:
+    Truly component-driven responsive designs.
+  Usage:
+    .card {
+      container-type: inline-size;
+      @include cq(400px) { font-size: 1.125rem; }
+      @include cq(null, 320px) { padding: .75rem; }
+    }
+  Output:
+    @container (min-width: 400px) { .card { font-size: 1.125rem; } }
+    @container (max-width: 320px) { .card { padding: .75rem; } }
+============================================================ */
+@mixin cq($min: null, $max: null) {
+    $query: ();
+    @if $min != null {
+        $query: list.append($query, '(min-width: #{$min})');
+    }
+    @if $max != null {
+        $query: list.append($query, '(max-width: #{$max})');
+    }
+    @container #{list.join($query, " and ")} {
+        @content;
+    }
+}
+
+/* ============================================================
+  THEME TOKENS VIA CSS VARIABLES
+  What it does:
+    Generates CSS custom properties under a selector (root or theme).
+  When to use:
+    Design systems, dark mode, per-component theming.
+  Usage:
+    @include theme(':root', (
+      'color-primary': #3b82f6,
+      'radius': .75rem
+    ));
+  Output:
+    :root {
+      --color-primary: #3b82f6;
+      --radius: .75rem;
+    }
+============================================================ */
+@mixin theme($selector, $vars) {
+    #{$selector} {
+        @each $name, $value in $vars {
+            --#{$name}: #{$value};
+        }
+    }
+}
+
+/* ============================================================
+  RESPONSIVE ROOT FONT
+  What it does:
+    Dynamically adjusts the root font size between two values.
+  When to use:
+    Automatically scale all rem-based units across breakpoints.
+  Usage:
+    @include responsive-root-font(14px, 16px, 360px, 1440px);
+  Output:
+    html { font-size: clamp(14px, calc(...), 16px); }
+============================================================ */
+@mixin responsive-root-font($min-size: 14px, $max-size: 16px, $min-vw: 360px, $max-vw: 1440px) {
+    html {
+        font-size: clamp(
+            $min-size,
+            calc(#{$min-size} + (#{strip-unit($max-size - $min-size)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})),
+            $max-size
+        );
+    }
+}
+
+/* ============================================================
+  MODAL ACCENT STYLES
+  What it does:
+    Applies accent colors to modal components based on a token.
+  When to use:
+    Themed modals for success, error, warning, etc.
+  Usage:
+    .app-modal { @include modal-accent(state_success_primary); }
+  Output:
+    .app-modal-inner { border-left: 6px solid var(--state_success_primary); ... }
+============================================================ */
+@mixin modal-accent($token) {
+    .app-modal-inner {
+        border-left-color: $token;
+
+        .modal-content-title {
+            .modal-icon {
+                svg {
+                    fill: $token;
+                }
+            }
+        }
+    }
+}

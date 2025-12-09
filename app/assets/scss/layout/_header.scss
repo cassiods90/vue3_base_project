@@ -1,0 +1,38 @@
+@use '../helpers' as *;
+@use '../base' as *;
+
+.header {
+    height: rem(60);
+    border-bottom: rem(1) solid theme_color(border_color_primary);
+    .header-navbar {
+        .navbar-item {
+            position: relative;
+            margin: rem(0) rem(15);
+            @include transition();
+            &:hover,
+            &.router-link-active {
+                color: theme_color(interaction_hover_primary);
+                &:after {
+                    left: 0;
+                    right: auto;
+                    width: 100%;
+                }
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 1px;
+                right: 0;
+                bottom: -5px;
+                background: theme_color(interaction_hover_primary);
+                @include transition();
+            }
+        }
+    }
+
+    .header-pageTheme {
+        position: absolute;
+        right: rem(20);
+    }
+}

@@ -1,0 +1,86 @@
+@use '../helpers' as *;
+@use 'variables' as *;
+
+/* ==================================================================
+    TYPOGRAPHY
+================================================================== */
+.text {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: rem(14);
+    font-family: font(PoppinsRegular);
+    color: theme_color(text_primary);
+    text-align: left;
+    line-height: 1.1;
+
+    /* Text Sizes */
+    &.text-maintitle {
+        font-size: rem(40);
+        font-family: font(merriweatherBold);
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+    }
+    &.text-title {
+        font-size: rem(20);
+        font-family: font(PoppinsBold);
+        line-height: 1.25;
+    }
+    &.text-subtitle {
+        font-size: rem(18);
+        font-family: font(PoppinsSemiBold);
+        line-height: 1.3;
+    }
+    &.text-small {
+        font-size: rem(12);
+        line-height: 1.35;
+    }
+
+    /* Text Weights */
+    &.text-weightLight {
+        font-family: font(PoppinsLight);
+    }
+    &.text-weightSemiBold {
+        font-family: font(PoppinsSemiBold);
+    }
+    &.text-weightBold {
+        font-family: font(PoppinsBold);
+    }
+
+    /* Text Transforms */
+    &.text.uppercase {
+        text-transform: uppercase;
+    }
+
+    /* Text Colors */
+    &.text-white {
+        color: theme_color(color_white);
+    }
+    &.text-color-primary {
+        color: theme_color(text_primary);
+    }
+    &.text-color-secondary {
+        color: theme_color(text_secondary);
+    }
+    &.text-color-inverted {
+        color: theme_color(text_inverted);
+    }
+    &.text-theme-accent {
+        color: theme_color(theme_accent);
+    }
+    &.text-state-danger {
+        color: theme_color(state_danger_primary);
+    }
+    &.text-state-warning {
+        color: theme_color(state_warning_primary);
+    }
+    &.text-state-success {
+        color: theme_color(state_success_primary);
+    }
+    &.text-state-info {
+        color: theme_color(state_info_primary);
+    }
+    &.text-state-neutral {
+        color: theme_color(state_neutral);
+    }
+}

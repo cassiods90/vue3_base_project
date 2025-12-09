@@ -1,0 +1,54 @@
+@use '../helpers' as *;
+@use '../base' as *;
+
+.app-modal {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    &.modal-success {
+        @include modal-accent(theme_color(state_success_primary));
+    }
+    &.modal-warning {
+        @include modal-accent(theme_color(state_warning_primary));
+    }
+    &.modal-error {
+        @include modal-accent(theme_color(state_danger_primary));
+    }
+    &.modal-info {
+        @include modal-accent(theme_color(state_info_primary));
+    }
+    &.modal-confirm {
+        @include modal-accent(theme_color(state_neutral));
+    }
+    .app-modal-inner {
+        background: theme_color(background_card);
+        box-shadow: box_shadows(cards);
+        width: auto;
+        height: auto;
+        border-radius: rem(20);
+        padding: rem(30);
+        border-left: rem(10) solid transparent;
+        position: relative;
+        .app-modal-content {
+            .modal-content-title {
+                .modal-icon {
+                    max-width: rem(20);
+                    margin-right: rem(10);
+                    svg {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+            .modal-content-body {
+                margin: rem(20) rem(0) rem(40);
+            }
+            .modal-content-footer {
+                width: 100%;
+            }
+        }
+    }
+}

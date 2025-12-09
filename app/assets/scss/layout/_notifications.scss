@@ -1,0 +1,146 @@
+// app/assets/scss/layout/_notifications.scss
+@use '../helpers' as *;
+@use '../base' as *;
+
+/* ============================================================
+   TOAST NOTIFICATIONS (vue3-toastify)
+   Themed using design tokens
+============================================================ */
+
+.Toastify {
+    // Container geral de todos os toasts
+    .Toastify__toast-container {
+        position: fixed;
+        z-index: 9999;
+        width: auto;
+
+        &--top-right {
+            top: rem(10);
+            right: rem(10);
+        }
+
+        &--top-left {
+            top: rem(10);
+            left: rem(10);
+        }
+
+        &--bottom-right {
+            bottom: rem(0);
+            right: rem(10);
+        }
+
+        &--bottom-left {
+            bottom: rem(0);
+            left: rem(10);
+        }
+    }
+
+    // Toast base
+    .Toastify__toast {
+        min-width: rem(260);
+        max-width: rem(600);
+        padding: rem(10);
+        border-radius: rem(20);
+        gap: rem(10);
+        font-size: rem(14);
+        line-height: 1.1;
+        min-height: rem(40);
+        margin-bottom: rem(10);
+
+        background: theme_color(color_white);
+
+        color: theme_color(color_white);
+        box-shadow: box_shadows(primary);
+        border: rem(0);
+
+        // Corpo do toast
+        .Toastify__toast-body {
+            display: flex;
+            align-items: center;
+            gap: rem(8);
+            padding: rem(0) rem(10);
+        }
+
+        // Icon
+        .Toastify__toast-icon {
+            width: rem(18);
+            height: rem(18);
+            flex-shrink: 0;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        // Close Button
+        .Toastify__close-button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            // opacity: 0.6;
+            color: theme_color(color_white);
+            @include transition();
+
+            svg {
+                fill: theme_color(color_white);
+                width: rem(14);
+                height: rem(14);
+            }
+        }
+    }
+
+    /* ============================
+       Semantic variations
+    ============================= */
+
+    .Toastify__toast--success {
+        background: theme_color(state_success_primary);
+        border-left: rem(6) solid theme_color(state_success_secondary);
+        --toastify-icon-color-success: #{theme_color(state_success_secondary)};
+    }
+
+    .Toastify__toast--error {
+        background: theme_color(state_danger_primary);
+        border-left: rem(6) solid theme_color(state_danger_secondary);
+        --toastify-icon-color-error: #{theme_color(state_danger_secondary)};
+    }
+
+    .Toastify__toast--warning {
+        background: theme_color(state_warning_primary);
+        border-left: rem(6) solid theme_color(state_warning_secondary);
+        --toastify-icon-color-warning: #{theme_color(state_warning_secondary)};
+    }
+
+    .Toastify__toast--info {
+        background: theme_color(state_info_primary);
+        border-left: rem(6) solid theme_color(state_info_secondary);
+        --toastify-icon-color-info: #{theme_color(state_info_secondary)};
+    }
+
+    /* ============================
+       Progress bar
+    ============================= */
+
+    .Toastify__progress-bar {
+        height: rem(5);
+        border-radius: 0 0 rem(999) rem(999);
+        background: theme_color(border_color_secondary);
+
+        &--success {
+            background: theme_color(state_success_secondary);
+        }
+
+        &--error {
+            background: theme_color(state_danger_secondary);
+        }
+
+        &--warning {
+            background: theme_color(state_warning_secondary);
+        }
+
+        &--info {
+            background: theme_color(state_info_secondary);
+        }
+    }
+}

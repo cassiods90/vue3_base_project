@@ -1,0 +1,5 @@
+@use '../base' as *;
+
+.swiper-slide {
+    box-shadow: box_shadows(primary);
+}

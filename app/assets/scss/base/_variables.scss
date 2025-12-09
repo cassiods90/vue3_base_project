@@ -1,0 +1,219 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:color';
+
+/* ============================================================
+   COLOR SYSTEM
+============================================================ */
+/* THEME BASE COLORS */
+$base_theme_white: #ffffff;
+$base_theme_black: #000000;
+$base_theme_primary: #007ea7;
+$base_theme_secondary: #80ced7;
+$base_theme_tertiary: #ccdbdc;
+$base_theme_accent: #003249;
+
+/* THEME SEC COLORS */
+$sec_theme_white: #f7f7f7;
+$sec_theme_black: #000000;
+$sec_theme_primary: #001021;
+$sec_theme_secondary: #021a33;
+$sec_theme_tertiary: #e2edf7;
+$sec_theme_accent: #00b4ff;
+
+/* STATES COLORS */
+$state_success_primary: #27ae60;
+$state_success_secondary: #047857;
+$state_warning_primary: #f59e0b;
+$state_warning_secondary: #b45309;
+$state_danger_primary: #ef4444;
+$state_danger_secondary: #b91c1c;
+$state_info_primary: #3b82f6;
+$state_info_secondary: #1d4ed8;
+
+$colors_base_theme: (
+    // Core
+    color_white: $base_theme_white,
+    color_black: $base_theme_black,
+
+    // Theme
+    theme_primary: $base_theme_primary,
+    theme_secondary: $base_theme_secondary,
+    theme_tertiary: $base_theme_tertiary,
+    theme_accent: $base_theme_accent,
+
+    // Text
+    text_primary: $base_theme_accent,
+    text_secondary: rgba($base_theme_accent, 0.5),
+    text_inverted: $base_theme_tertiary,
+
+    // Buttons
+    button_text_primary: $base_theme_accent,
+    button_text_secondary: $base_theme_primary,
+    button_border_primary: $base_theme_accent,
+    button_border_secondary: $base_theme_primary,
+    button_hover_background_primary: $base_theme_accent,
+    button_hover_background_secondary: $base_theme_primary,
+    button_hover_text_primary: $base_theme_tertiary,
+    button_hover_text_secondary: $base_theme_white,
+
+    // Utilities
+    icon_color: $base_theme_accent,
+    border_color_primary: $base_theme_accent,
+    border_color_secondary: $base_theme_primary,
+    box_shadow_color: $base_theme_accent,
+
+    // Interactions
+    interaction_hover_primary: $base_theme_primary,
+    interaction_hover_secondary: $base_theme_accent,
+    interaction_focus: $base_theme_primary,
+    interaction_active: $base_theme_accent,
+    interaction_disabled: rgba($base_theme_accent, 0.1),
+    // States
+    state_success_primary: $state_success_primary,
+    state_success_secondary: $state_success_secondary,
+    state_warning_primary: $state_warning_primary,
+    state_warning_secondary: $state_warning_secondary,
+    state_danger_primary: $state_danger_primary,
+    state_danger_secondary: $state_danger_secondary,
+    state_info_primary: $state_info_primary,
+    state_info_secondary: $state_info_secondary,
+    state_neutral: $base_theme_tertiary,
+
+    // Backgrounds
+    background_main: rgba($base_theme_tertiary, 0.5),
+    background_card: $base_theme_white,
+    background_surface: rgba($base_theme_accent, 0.07)
+);
+
+$colors_sec_theme: (
+    // Core
+    color_white: $sec_theme_white,
+    color_black: $sec_theme_black,
+
+    // Theme
+    theme_primary: $sec_theme_primary,
+    theme_secondary: $sec_theme_secondary,
+    theme_tertiary: $sec_theme_tertiary,
+    theme_accent: $sec_theme_accent,
+
+    // Text
+    text_primary: $sec_theme_accent,
+    text_secondary: rgba($sec_theme_accent, 0.5),
+    text_inverted: $sec_theme_tertiary,
+
+    // Buttons
+    button_text_primary: $sec_theme_accent,
+    button_text_secondary: rgba($sec_theme_white, 0.7),
+    button_border_primary: $sec_theme_accent,
+    button_border_secondary: rgba($sec_theme_white, 0.7),
+    button_hover_background_primary: $sec_theme_accent,
+    button_hover_background_secondary: rgba($sec_theme_white, 0.8),
+    button_hover_text_primary: $sec_theme_tertiary,
+    button_hover_text_secondary: $sec_theme_primary,
+
+    // Utilities
+    icon_color: $sec_theme_accent,
+    border_color_primary: $sec_theme_accent,
+    border_color_secondary: $sec_theme_secondary,
+    box_shadow_color: $sec_theme_accent,
+    // Interactions
+    interaction_hover_primary: $sec_theme_accent,
+    interaction_hover_secondary: $sec_theme_secondary,
+    interaction_focus: rgba($sec_theme_white, 0.5),
+    interaction_active: $sec_theme_accent,
+    interaction_disabled: rgba($sec_theme_accent, 0.1),
+    // States
+    state_success_primary: $state_success_primary,
+    state_success_secondary: $state_success_secondary,
+    state_warning_primary: $state_warning_primary,
+    state_warning_secondary: $state_warning_secondary,
+    state_danger_primary: $state_danger_primary,
+    state_danger_secondary: $state_danger_secondary,
+    state_info_primary: $state_info_primary,
+    state_info_secondary: $state_info_secondary,
+
+    state_neutral: $sec_theme_accent,
+
+    // Backgrounds
+    background_main: rgba($sec_theme_primary, 1),
+    background_card: $sec_theme_secondary,
+    background_surface: rgba($sec_theme_accent, 0.07)
+);
+
+/* Pick which theme is active at build time (override before use if needed) */
+$current_colors: $colors_base_theme !default;
+
+/* ============================================================
+   BOX SHADOWS
+============================================================ */
+:root.base {
+    @each $key, $value in $colors_base_theme {
+        --color-#{$key}: #{$value};
+    }
+
+    $shadow-color-base: map.get($colors_base_theme, box_shadow_color);
+
+    --color-box_shadow_rgb: #{color.channel($shadow-color-base, 'red', $space: rgb)}, #{color.channel($shadow-color-base, 'green', $space: rgb)},
+        #{color.channel($shadow-color-base, 'blue', $space: rgb)};
+}
+
+:root.sec {
+    @each $key, $value in $colors_sec_theme {
+        --color-#{$key}: #{$value};
+    }
+
+    $shadow-color-sec: map.get($colors_sec_theme, box_shadow_color);
+
+    --color-box_shadow_rgb: #{color.channel($shadow-color-sec, 'red', $space: rgb)}, #{color.channel($shadow-color-sec, 'green', $space: rgb)},
+        #{color.channel($shadow-color-sec, 'blue', $space: rgb)};
+}
+
+$box_shadows: (
+    primary: 0rem 0.0625rem 0.125rem rgba(var(--color-box_shadow_rgb), 0.5),
+    inputs: 2px 6px 10px -2px rgba(var(--color-box_shadow_rgb), 0.9),
+    cards: (
+        0px 19px 38px rgba(var(--color-box_shadow_rgb), 0.2),
+        0px 15px 12px rgba(var(--color-box_shadow_rgb), 0.35),
+    ),
+);
+
+/* ============================================================
+   FONT FAMILY MAP
+============================================================ */
+$fonts: (
+    JosefinSansLight: 'JosefinSans-Light',
+    JosefinSansRegular: 'JosefinSans-Regular',
+    JosefinSansBold: 'JosefinSans-Bold',
+
+    PoppinsLight: 'Poppins-Light',
+    PoppinsRegular: 'Poppins-Regular',
+    PoppinsSemiBold: 'Poppins-SemiBold',
+    PoppinsBold: 'Poppins-Bold',
+
+    LatoRegular: 'lato-regular',
+    LatoBold: 'lato-bold',
+    LatoBlack: 'lato-black',
+
+    RobotoLight: 'roboto-light',
+    RobotoRegular: 'roboto-regular',
+    RobotoBold: 'roboto-bold',
+    RobotoCondensedBold: 'Roboto-Condensed-Bold',
+
+    MontserratRegular: 'Montserrat-Regular',
+    MontserratBold: 'Montserrat-Bold',
+
+    merriweatherRegular: 'merriweather-regular',
+    merriweatherBold: 'merriweather-bold',
+
+    OswaldRegular: 'oswald-regular',
+
+    AlfaSlabOneRegular: 'Alfa Slab One Regular',
+
+    LeaguegothicRegular: 'leaguegothic-regular',
+
+    AlexbrushRegular: 'alexbrush-regular',
+
+    ReklameScriptRegular: 'ReklameScript-Regular_DEMO',
+);

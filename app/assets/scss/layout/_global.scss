@@ -1,0 +1,250 @@
+@use '../helpers' as *;
+@use '../base' as *;
+
+/* ============================================================
+   GLOBAL STYLES
+============================================================ */
+@include responsive-root-font();
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/* ============================================================
+   GLOBAL SCROLLBAR — Modern & Minimal
+============================================================ */
+
+/* ---- Chrome, Edge, Safari ---- */
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: theme_color(background_surface);
+    border-radius: rem(10);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: theme_color(theme_accent);
+    border-radius: rem(10);
+    border: rem(2) solid theme_color(background_surface);
+    @include transition();
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: theme_color(interaction_hover_primary);
+}
+
+/* ---- Firefox ---- */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: theme_color(theme_accent) theme_color(background_surface);
+}
+
+/* ============================================================
+   MINIMAL ELEMENT RESET
+============================================================ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: rem(0);
+    padding: rem(0);
+    border: rem(0);
+    text-decoration: none;
+    list-style: none;
+    &:hover {
+        text-decoration: none;
+        list-style: none;
+    }
+}
+
+/* ============================================================
+   BASE TYPOGRAPHY & PAGE FRAME
+============================================================ */
+html,
+body {
+    box-sizing: border-box;
+    text-size-adjust: 100%;
+    background: theme_color(background_main);
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100dvh;
+    margin: rem(0);
+    padding: rem(0);
+    position: relative;
+    overflow: hidden;
+
+    @include transition(all, 0.5s, ease-in-out);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &.base {
+        @include export-theme($colors_base_theme);
+    }
+    &.sec {
+        @include export-theme($colors_sec_theme);
+    }
+}
+
+/* ============================================================
+   PUT THE FONT STACK ONLY ON BODY TO AVOID OVER-SCOPING
+============================================================ */
+body {
+    font-family: font(PoppinsRegular);
+}
+
+/* ============================================================
+   LINKS & LISTS RESET
+============================================================ */
+a {
+    text-decoration: none;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+/* ============================================================
+   SAFER SVG COLORING SCOPE
+============================================================ */
+.icon,
+.icon svg,
+.icon path {
+    fill: theme_color(icon_color);
+}
+
+/* ============================================================
+   RESPONSIVE IMAGES WITHOUT DISTORTION
+============================================================ */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; // enable only when inside fixed-ratio wrappers
+}
+
+/* ============================================================
+   INITIAL LOADER OVERLAY
+============================================================ */
+.loader-initial {
+    opacity: rem(0);
+    width: rem(0);
+    height: rem(0);
+    cursor: auto;
+    pointer-events: none;
+    background-color: rgba(theme_color(color_black), 0.6);
+    position: absolute;
+    top: rem(0);
+    left: rem(0);
+    z-index: 100;
+    &.showHide {
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+    }
+    .loader-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: rem(-105) rem(0) rem(0) rem(-125);
+        transform: translate(-50%, -50%);
+
+        align-content: center;
+        border: rem(35) solid theme_color(color_white);
+        border-top: rem(35) solid theme_color(theme_primary);
+        border-radius: 50%;
+        width: rem(250);
+        height: rem(250);
+        animation: spin 3s linear infinite;
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}

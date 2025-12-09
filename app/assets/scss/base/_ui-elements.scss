@@ -1,0 +1,174 @@
+@use '../helpers' as *;
+@use 'variables' as *;
+
+/* ---------- BUTTONS ---------- */
+.btn-items {
+    gap: rem(15);
+}
+
+.btn-item {
+    padding: rem(0) rem(15);
+    position: relative;
+    height: 40px;
+    outline: none;
+    background: transparent;
+    border-radius: rem(10);
+    border: rem(1) solid theme_color(button_border_primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include transition();
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+        background-color: theme_color(button_hover_background_primary);
+        border-color: theme_color(button_hover_background_primary);
+        span,
+        a {
+            color: theme_color(button_hover_text_primary);
+        }
+    }
+    &:disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.5;
+        background-color: theme_color(interaction_disabled);
+    }
+    span,
+    a {
+        color: theme_color(button_text_primary);
+        white-space: nowrap;
+        @include transition();
+    }
+
+    &.btn-secondary {
+        border-color: theme_color(button_border_secondary);
+        &:hover,
+        &:focus-visible,
+        &:active {
+            background-color: theme_color(button_hover_background_secondary);
+            border-color: theme_color(button_hover_background_secondary);
+            span,
+            a {
+                color: theme_color(button_hover_text_secondary);
+            }
+        }
+        span,
+        a {
+            color: theme_color(button_text_secondary);
+        }
+    }
+}
+
+/* ---------- INPUT ---------- */
+.input-item {
+    width: 100%;
+    max-width: rem(250);
+
+    label {
+    }
+    .input-wrapper {
+        position: relative;
+        width: 100%;
+        background-color: transparent;
+        border: rem(1) solid theme_color(border_color_primary);
+        border-radius: rem(8);
+        height: 40px;
+        &:focus-within {
+            border-color: theme_color(interaction_focus);
+            box-shadow: box_shadows(inputs);
+            input {
+                &::placeholder {
+                    color: theme_color(interaction_focus);
+                }
+            }
+            svg {
+                fill: theme_color(interaction_focus);
+                path {
+                    fill: theme_color(interaction_focus);
+                }
+            }
+        }
+        &.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+            background-color: theme_color(interaction_disabled);
+        }
+        input {
+            width: 100%;
+            height: 100%;
+            border-radius: rem(8);
+            padding: rem(0) rem(35);
+            font-size: rem(14);
+            font-family: font(PoppinsRegular);
+            color: theme_color(text_primary);
+            border: rem(0);
+            outline: none;
+            background-color: transparent;
+            @include transition();
+            &::placeholder {
+                font-size: rem(12);
+                line-height: 1.35;
+                color: theme_color(text_secondary);
+            }
+            &:disabled {
+                cursor: not-allowed;
+                background-color: transparent;
+                color: theme_color(text_secondary);
+            }
+        }
+        svg {
+            width: rem(20);
+            height: rem(20);
+            fill: theme_color(state_neutral);
+            top: 50%;
+            transform: translateY(-50%);
+            left: rem(10);
+            position: absolute;
+            path {
+                fill: theme_color(state_neutral);
+            }
+            &.eye,
+            &.eyeClose {
+                cursor: pointer;
+                position: absolute;
+                right: rem(10);
+                left: auto;
+            }
+        }
+    }
+}
+
+/* ---------- CARDS ---------- */
+.card-box {
+    background-color: theme_color(background_card);
+    border-radius: rem(20);
+    padding: rem(20);
+    box-shadow: box_shadows(cards);
+    width: 100%;
+    position: relative;
+    &:after {
+        content: '';
+        background: theme_color(background_surface);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: rem(20);
+        pointer-events: none;
+    }
+    .card-box-content {
+        width: 100%;
+        .card-box-item {
+            width: 50%;
+            &.card-box-left {
+            }
+            &.card-box-right {
+            }
+        }
+    }
+}

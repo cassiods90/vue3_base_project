@@ -1,0 +1,197 @@
+/*====== FONTS (WOFF only; TTF fallback where is necessary) ======*/
+
+/* Josefin Sans */
+@font-face {
+    font-family: 'JosefinSans-Light';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/fonts/JosefinSans-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'JosefinSans-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/JosefinSans-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'JosefinSans-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/JosefinSans-Bold.woff') format('woff');
+}
+
+/* Poppins */
+@font-face {
+    font-family: 'Poppins-Light';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/fonts/Poppins-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/Poppins-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/Poppins-SemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/Poppins-Bold.woff') format('woff');
+}
+
+/* Lato */
+@font-face {
+    font-family: 'lato-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/lato-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'lato-bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/lato-bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'lato-black';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('/fonts/lato-black.woff') format('woff');
+}
+
+/* Roboto */
+@font-face {
+    font-family: 'roboto-light';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/fonts/roboto-light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'roboto-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/roboto-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'roboto-bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/roboto-bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Roboto-Condensed-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/Roboto-Condensed-Bold.woff') format('woff');
+}
+
+/* Montserrat */
+@font-face {
+    font-family: 'Montserrat-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/Montserrat-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/Montserrat-Bold.woff') format('woff');
+}
+
+/* Merriweather */
+@font-face {
+    font-family: 'Merriweather-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/merriweather-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Merriweather-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    /* não há WOFF; usar TTF como fallback */
+    src: url('/fonts/merriweather-bold.ttf') format('truetype');
+}
+
+/* Oswald */
+@font-face {
+    font-family: 'oswald-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/oswald-regular.woff') format('woff');
+}
+
+/* Alfa Slab One */
+@font-face {
+    font-family: 'Alfa Slab One Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/AlfaSlabOne-Regular.woff') format('woff');
+}
+
+/* League Gothic */
+@font-face {
+    font-family: 'leaguegothic-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/leaguegothic-regular.woff') format('woff');
+}
+
+/* Alex Brush */
+@font-face {
+    font-family: 'alexbrush-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/alexbrush-regular.woff') format('woff');
+}
+
+/* Reklame Script (DEMO) */
+@font-face {
+    font-family: 'ReklameScript-Regular_DEMO';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/ReklameScript-Regular_DEMO.woff') format('woff');
+}

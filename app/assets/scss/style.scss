@@ -1,0 +1,3 @@
+// Imports helpers and base (variables, functions, mixins) — provided via additionalData
+// Import only the visual (layout) styles here so they are included in the final bundle
+@use 'layout' as *;

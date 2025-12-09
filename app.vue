@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <header>
         <AppHeader />
     </header>
@@ -10,6 +10,18 @@
     <footer>
         <AppFooter />
     </footer>
+</template> -->
+
+<template>
+    <Html :data-theme="colorMode.value">
+        <Body>
+            <NuxtLayout>
+                <NuxtPage />
+            </NuxtLayout>
+        </Body>
+    </Html>
 </template>
 
-<script setup></script>
+<script setup>
+const colorMode = useColorMode()
+</script>

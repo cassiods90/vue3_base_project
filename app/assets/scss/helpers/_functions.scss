@@ -1,0 +1,101 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:meta';
+@use '../base/variables' as vars;
+
+/* ============================================================
+    THEME COLOR (function)
+    What it does:
+        Retrieves a CSS variable for a theme color.
+    When to use:
+        Access theme colors defined via CSS variables.
+    Usage:
+        color: theme_color(primary); // -> var(--color-primary)
+============================================================ */
+@function theme_color($name) {
+    @return var(--color-#{$name});
+}
+
+/* ============================================================
+    FONT FAMILY (function)
+    What it does:
+        Retrieves font-family strings from a predefined map.
+    When to use:
+        Consistent application of font families.
+    Usage:
+        font-family: font(PoppinsBold); // -> 'Poppins-Bold'
+============================================================ */
+@function font($key) {
+    @return map.get(vars.$fonts, $key);
+}
+
+/* ============================================================
+    BOX SHADOWS (function)
+    What it does:
+        Retrieves predefined box-shadow values.
+    When to use:
+        Consistent application of box shadows.
+    Usage:
+        box-shadow: box_shadows(primary);
+============================================================ */
+@function box_shadows($name) {
+    @return map.get(vars.$box_shadows, $name);
+}
+
+/* ============================================================
+  STRIP UNIT (function)
+  What it does:
+    Returns the numeric part of a length (e.g., 16px -> 16).
+  When to use:
+    Math on lengths where units must be removed.
+  Usage:
+    width: strip-unit(24px); // -> 24
+  Output:
+    width: 24;
+============================================================ */
+@function strip-unit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+
+/* ============================================================
+  REM (function)
+  What it does:
+    Converts pixel values to rem based on a configurable root.
+  When to use:
+    Consistent scalable typography and spacing.
+  Usage:
+    font-size: rem(24);          // base 16 -> 1.5rem
+  Output:
+    font-size: 1.5rem;
+============================================================ */
+@function rem($value, $base: 16px) {
+    @if math.is-unitless($value) {
+        $value: $value * 1px;
+    }
+    @if math.is-unitless($base) {
+        $base: $base * 1px;
+    }
+    @return math.div($value, $base) * 1rem;
+}
+
+/* ============================================================
+  BREAKPOINTS MAP + HELPER
+  What it does:
+    Centralizes breakpoint values and provides a getter function.
+  When to use:
+    Keep all breakpoints consistent in one place.
+  Usage:
+    width: bp(lg); // -> 1024px
+============================================================ */
+$breakpoints: (
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    '2xl': 1536px,
+);
+
+@function bp($key) {
+    @return map.get($breakpoints, $key);
+}
